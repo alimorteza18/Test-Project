@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getProduct } from "../Services/contactService";
 import { useEffect, useState } from "react";
+import Particle from "../Utils/Particle";
 
 const Product = () => {
     const { id } = useParams();
@@ -14,10 +15,11 @@ const Product = () => {
     useEffect(() => {
         getProductData();
     }, []);
-    return (<>
+    return (<div className="flex justify-center items-center">
+            <Particle/>
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
                 <a href="#">
-                    <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+                    <img class="rounded-t-lg" src={data.images} alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">
@@ -29,7 +31,7 @@ const Product = () => {
                     </a>
                 </div>
             </div>
-    </>);
+    </div>);
 }
 
 export default Product;

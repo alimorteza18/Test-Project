@@ -2,9 +2,10 @@ import { useState } from "react";
 import Particle from "../Utils/Particle";
 import { login } from "../Services/contactService";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,7 +16,7 @@ const Login = () => {
             const { status, data } = await login(user);
             if (status === 201) {
                 localStorage.setItem("token", data.access_token)
-                window.location.href = "/products";
+                navigate('/products')
             }
         } catch (ex) {
             console.log(ex);
